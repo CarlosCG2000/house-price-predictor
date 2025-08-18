@@ -11,11 +11,13 @@ logging.basicConfig(
 )
 logger = logging.getLogger('data-processor')
 
+# Primero cargamos los datos
 def load_data(file_path):
     """Load data from a CSV file."""
     logger.info(f"Loading data from {file_path}")
     return pd.read_csv(file_path)
 
+# Limpiar los datos
 def clean_data(df):
     """Clean the dataset by handling missing values and outliers."""
     logger.info("Cleaning dataset")
@@ -60,6 +62,7 @@ def clean_data(df):
     
     return df_cleaned
 
+# Procesar los datos
 def process_data(input_file, output_file):
     """Full data processing pipeline."""
     # Create output directory if it doesn't exist
@@ -82,6 +85,6 @@ def process_data(input_file, output_file):
 if __name__ == "__main__":
     # Example usage
     process_data(
-        input_file="data/raw/house_data.csv", 
+        input_file="data/raw/house_data.csv",
         output_file="data/processed/cleaned_house_data.csv"
     )
