@@ -159,9 +159,9 @@ jobs:
         username: ${{ vars.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
      
-    - name: Push Docker image to DockerHub
+    - name: Push to DockerHub
       run: |
-        COMMIT_HASH=$(echo ${{ github.sha }} | cut -c1-7)
-        docker tag docker.io/${{ vars.DOCKERHUB_USERNAME }}/house-price-model:$COMMIT_HASH docker.io/${{ vars.DOCKERHUB_USERNAME }}/house-price-model:latest
-        docker push docker.io/${{ vars.DOCKERHUB_USERNAME }}/house-price-model:$COMMIT_HASH
-        docker push docker.io/${{ vars.DOCKERHUB_USERNAME }}/house-price-model:latest
+        COMMIT_HASH=$(echo d3385c1c782aff803f1849c95feb54cc88ec7f47 | cut -c1-7)
+        docker tag docker.io/carlos4u/house-price-model:$COMMIT_HASH docker.io/carlos4u/house-price-model:latest
+        docker push docker.io/carlos4u/house-price-model:$COMMIT_HASH
+        docker push docker.io/carlos4u/house-price-model:latest
