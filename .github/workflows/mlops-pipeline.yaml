@@ -138,13 +138,13 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
       
-    - name: Build and test Docker image
+    - name: Build and Test Docker Image
       run: |
-        COMMIT_HASH=$(echo ${{ github.sha }} | cut -c1-7)
-        docker build -t docker.io/${{ vars.DOCKERHUB_USERNAME }}/house-price-model:$COMMIT_HASH -f Dockerfile .
-        docker run -d -p 8000:8000 --name test-api docker.io/${{ vars.DOCKERHUB_USERNAME }}/house-price-model:$COMMIT_HASH
+        COMMIT_HASH=$(echo 25493610d45eb0f4ecfc32852f049b434686d687 | cut -c1-7)
+        docker build -t docker.io/carlos4u/house-price-model:$COMMIT_HASH -f Dockerfile .
+        docker run -d -p 8000:8000 --name test-api docker.io/carlos4u/house-price-model:$COMMIT_HASH
         for i in {1..10}; do
-          curl -f http://localhost:8000/health && break || sleep 5;
+        curl -f http://localhost:8000/health && break || sleep 5;
         done
         docker logs test-api
     - name: Clean up Test Container
